@@ -1,12 +1,9 @@
-# Ex. No : 1	
-# IMPLEMENTATION OF SYMBOL TABLE 
-## Register Number : 212222110038
-## Date : 10.10.2024
-
-## AIM   
-To write a C program to implement a symbol table.
-
-## ALGORITHM
+# Ex-1 IMPLEMENTATION-OF-SYMBOL-TABLE
+## Name: sanjay m
+## Register No : 212222110038
+# AIM:
+## To write a C program to implement a symbol table.
+# ALGORITHM:
 1.	Start the program.
 2.	Get the input from the user with the terminating symbol ‘$’.
 3.	Allocate memory for the variable by dynamic memory allocation function.
@@ -15,65 +12,73 @@ To write a C program to implement a symbol table.
 6.	The steps are repeated till ‘$’ is reached.
 7.	To reach a variable, enter the variable to be searched and symbol table has been checked for corresponding variable, the variable along with its address is displayed as result.
 8.	Stop the program. 
-
-## PROGRAM
+# PROGRAM:
 ```
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
+#include <stdio.h> 
+#include <ctype.h> 
+#include <string.h> 
+#include <stdlib.h>
 
 #define MAX_EXPRESSION_SIZE 100
 
 int main() {
-    int i = 0, j = 0, x = 0, n, flag = 0;
+    int i = 0, j = 0, x = 0, n, flag = 0; 
     void *add[5];
     char b[MAX_EXPRESSION_SIZE], d[15], c, srch;
 
+    // Input the expression terminated by '$'
     printf("Enter the Expression terminated by $: ");
-    while ((c = getchar()) != '$' && i < MAX_EXPRESSION_SIZE - 1) {
+    while((c = getchar()) != '$' && i < MAX_EXPRESSION_SIZE - 1) { 
         b[i++] = c;
     }
-    b[i] = '\0'; // Null terminate the string
+    b[i] = '\0'; // Null-terminate the string
     n = i - 1;
 
+    // Display the given expression
     printf("Given Expression: %s\n", b);
 
-    printf("\nSymbol Table\n");
+    // Symbol table heading
+    printf("\nSymbol Table\n"); 
     printf("Symbol\taddr\ttype\n");
 
-    for (j = 0; j <= n; j++) {
+    // Build symbol table
+    for(j = 0; j <= n; j++) { 
         c = b[j];
-        if (isalpha((unsigned char)c)) {
+        if (isalpha((unsigned char)c)) { // Check if the character is a letter
             if (j == n) {
-                void *p = malloc(sizeof(char));
+                void *p = malloc(sizeof(char)); 
                 add[x] = p;
-                d[x] = c;
+                d[x] = c; 
                 printf("%c\t%p\tidentifier\n", c, p);
             } else {
                 char ch = b[j + 1];
-                if (ch == '+' || ch == '-' || ch == '*' || ch == '=') {
+                if (ch == '+' || ch == '-' || ch == '*' || ch == '=') { 
                     void *p = malloc(sizeof(char));
                     add[x] = p;
-                    d[x] = c;
-                    printf("%c\t%p\tidentifier\n", c, p);
+                    d[x] = c; 
+                    printf("%c\t%p\tidentifier\n", c, p); 
                     x++;
                 }
             }
         }
     }
 
-    printf("\nThe symbol to be searched: ");
+    // Search for a symbol
+    printf("\nThe symbol to be searched: "); 
+    getchar(); // To consume the newline character left by the previous input
     srch = getchar();
-    for (i = 0; i <= x; i++) {
+    
+    for(i = 0; i <= x; i++) { 
         if (srch == d[i]) {
-            printf("Symbol Found\n");
-            printf("%c@address%p\n", srch, add[i]);
+            printf("Symbol Found\n"); 
+            printf("%c @ address %p\n", srch, add[i]); 
             flag = 1;
         }
     }
 
-    if (flag == 0)
+    if(flag == 0) {
         printf("Symbol Not Found\n");
+    }
 
     // Free dynamically allocated memory
     for (i = 0; i <= x; i++) {
@@ -83,8 +88,11 @@ int main() {
     return 0;
 }
 ```
-## OUTPUT 
-![image](https://github.com/KISHOREM04/19CS409-Compiler-Design-Lab/assets/119404643/dc448dcf-ea91-436e-ae3f-827195af9574)
+# OUTPUT:
 
-## RESULT
+![Screenshot 2024-10-17 144724](https://github.com/user-attachments/assets/b129e593-045e-4d55-9780-f0c2def769fa)
+
+
+# RESULT:
 The program to implement a symbol table is executed and the output is verified.
+
